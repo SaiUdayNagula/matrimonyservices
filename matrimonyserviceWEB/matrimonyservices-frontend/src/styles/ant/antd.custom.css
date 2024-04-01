@@ -1,0 +1,40 @@
+
+.ant-select-selector,
+.ant-input-affix-wrapper:focus-within,
+.ant-input,.ant-picker{
+    box-shadow: none !important;
+    border-radius: 3px !important;
+}
+.border-none .ant-select-selector{
+    border: none !important;
+}
+:where(.css-dev-only-do-not-override-ck2gnr).ant-collapse .ant-collapse-content{
+    border: none;
+}
+.ant-badge-count{
+    background: #FFAC0A !important;
+}
+.custom-slider .ant-slider-rail{
+    background-color: #C0BFBF;
+}
+.custom-slider .ant-slider-track{
+    background-color: #1E2C0E;
+}
+.custom-slider:hover .ant-slider-track{
+    background-color: #1E2C0E;
+}
+.custom-slider .ant-slider-handle:after{
+    box-shadow: none;
+    overflow: hidden;
+    background-color: #FFAC0A;
+    border: 2px solid #FFAC0A;
+}
+
+.select-group{
+    background-color: #fff;
+    border-radius:5px;
+}
+.select-group .ant-select-selector{
+    border: none !important;
+    background: transparent !important;
+}

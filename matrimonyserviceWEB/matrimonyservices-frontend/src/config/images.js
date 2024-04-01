@@ -1,0 +1,42 @@
+const images = {
+    // logo: '../assets/images/logo.png',
+    logo: '/assets/LogoHome.png',
+    login: '../assets/login.jpg',
+    interact: '../assets/Interact.svg',
+    signup: '../assets/singup.svg',
+    connect: '../assets/connect.svg',
+    cat: '../assets/cat.png',
+    banner: '../assets/Slider.png',
+    banner0: '../assets/profile_banner/banner0.jpg',
+    banner1: '../assets/profile_banner/banner1.jpg',
+    banner2: '../assets/profile_banner/banner2.jpg',
+    banner3: '../assets/profile_banner/banner3.jpg',
+    banner4: '../assets/profile_banner/banner4.jpg',
+    // bg_1:'../assets/bg_1.png',
+    blog_1:'../assets/blog1.png',
+    blog_2:'../assets/blog2.png',
+    blog_3:'../assets/blog3.png',
+    sideImage:'../assets/SideImage.png',
+    logoIcon:"../assets/Logo-icon.png",
+    image1:"../assets/image1.png",
+    image2:"../assets/image2.png",
+    image3:"../assets/image3.png",
+    image4:"../assets/image4.png",
+    image5:"../assets/image5.png",
+    image6:"../assets/image6.png",
+    image7:"../assets/image7.png",
+    image8:"../assets/image8.png",
+    image9:"../assets/image9.png",
+    logo2:"../assets/logo_3.png",
+    registration:"../assets/registration.png",
+    Rectangle:"../assets/Rectangle.png",
+    doctor:"../assets/doctor1.png",
+    proposal:"../assets/proposal.png",
+    membershipCard:"../assets/membership-card.png",
+
+    // image1:"../assets/image1",
+
+
+}
+
+export default images

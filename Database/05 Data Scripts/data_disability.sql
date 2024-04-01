@@ -1,0 +1,28 @@
+-- Insert values for disabilities with definitions
+INSERT INTO lkp_disability (name, description)
+VALUES
+    ('Vision Impairment', 'A condition that affects the eyesight, ranging from partial to complete loss of vision.'),
+    ('Hearing Impairment', 'A partial or complete inability to hear.'),
+    ('Mobility Impairment', 'A condition that affects a person''s ability to move freely.'),
+    ('Cognitive Impairment', 'A condition that affects cognitive functions such as memory, attention, and problem-solving.'),
+    ('Speech Impairment', 'A condition that affects the ability to produce sounds that create clear and effective communication.'),
+    ('Deaf-Blindness', 'A combined hearing and vision impairment that causes difficulties in communication and accessing information.'),
+    ('Autism Spectrum Disorder', 'A neurodevelopmental disorder characterized by challenges in social interaction and communication, and restricted and repetitive behaviors.'),
+    ('Intellectual Disability', 'A condition characterized by limitations in intellectual functioning and adaptive behavior.'),
+    ('Psychiatric Disability', 'A condition that affects mental health and may impact emotions, thoughts, and behaviors.'),
+    ('Learning Disability', 'A condition that affects the ability to acquire and use academic and/or social skills at the expected level.'),
+    ('Dyslexia', 'A specific learning disability that impacts reading, spelling, and writing skills.'),
+    ('Attention Deficit Hyperactivity Disorder (ADHD)', 'A neurodevelopmental disorder characterized by persistent patterns of inattention, hyperactivity, and impulsivity.'),
+    ('Down Syndrome', 'A genetic disorder caused by the presence of an extra chromosome 21, resulting in physical and intellectual delays.'),
+    ('Cerebral Palsy', 'A group of disorders affecting movement and coordination caused by damage to the brain during development.'),
+    ('Multiple Sclerosis', 'A chronic autoimmune disease that affects the central nervous system, leading to varied symptoms.'),
+    ('Muscular Dystrophy', 'A group of genetic disorders characterized by progressive muscle weakness and degeneration.'),
+    ('Chronic Fatigue Syndrome', 'A complex disorder characterized by extreme fatigue that does not improve with rest and may be worsened by physical or mental activity.'),
+    ('Epilepsy', 'A neurological disorder characterized by recurrent seizures caused by abnormal brain activity.'),
+    ('Rheumatoid Arthritis', 'An autoimmune disorder that causes chronic inflammation of the joints, leading to pain, swelling, and joint damage.'),
+    ('Fibromyalgia', 'A disorder characterized by widespread musculoskeletal pain, fatigue, and tenderness in localized areas.'),
+    ('Amputation', 'The removal of a body part, usually an extremity, due to injury, disease, or surgery.'),
+    ('Spinal Cord Injury', 'Damage to the spinal cord resulting in a loss of function, often causing paralysis.'),
+    ('Traumatic Brain Injury (TBI)', 'A sudden injury to the brain caused by an external force, leading to cognitive and physical impairment.'),
+    ('Diabetes-related Disability', 'Complications related to diabetes that may impact various aspects of health and functioning.'),
+    ('Chronic Pain Disorder', 'Persistent pain that may last for an extended period and can impact physical and mental well-being.');

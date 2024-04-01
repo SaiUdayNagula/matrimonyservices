@@ -1,0 +1,28 @@
+-- Insert values for friendship types with definitions
+INSERT INTO lkp_friend_type(name, description)
+VALUES
+    ('Close Friends', 'Friends with a deep and intimate connection, often sharing personal thoughts and feelings.'),
+    ('Childhood Friends', 'Friends from early years of life, typically from elementary or primary school.'),
+    ('Work Friends', 'Friends made in a professional or workplace setting.'),
+    ('School Friends', 'Friends from the educational setting, excluding higher education.'),
+    ('College Friends', 'Friends from the higher education setting, typically from a college or university.'),
+    ('Neighbors', 'Friends who live in close proximity, often in the same neighborhood.'),
+    ('Casual Friends', 'Friends with a relaxed and informal connection.'),
+    ('Best Friends', 'Very close and trusted friends, often considered as the closest confidantes.'),
+    ('Online Friends', 'Friends made through online platforms and social media.'),
+    ('Long-Distance Friends', 'Friends who maintain a friendship despite being geographically distant.'),
+    ('Gym Buddies', 'Friends with whom one exercises and goes to the gym.'),
+    ('Hobby Buddies', 'Friends who share common hobbies and interests.'),
+    ('Travel Companions', 'Friends with whom one travels and explores new places.'),
+    ('Study Partners', 'Friends who collaborate on academic studies and assignments.'),
+    ('Pen Pals', 'Friends who exchange letters and communication through written correspondence.'),
+    ('Activity Friends', 'Friends with whom one engages in specific activities.'),
+    ('Supportive Friends', 'Friends who provide emotional and practical support.'),
+    ('Adventurous Friends', 'Friends who enjoy taking risks and seeking new experiences together.'),
+    ('Party Friends', 'Friends with whom one socializes and attends parties and events.'),
+    ('Foodie Friends', 'Friends who share a love for food and enjoy dining together.'),
+    ('Coffee Buddies', 'Friends with whom one enjoys coffee and casual conversations.'),
+    ('Book Club Friends', 'Friends who participate in a book club and discuss literature together.'),
+    ('Gaming Pals', 'Friends who share an interest in gaming and play video or board games together.'),
+    ('Artistic Companions', 'Friends who appreciate and engage in artistic and creative pursuits together.'),
+    ('Professional Network', 'Friends who are part of a professional or business network.');
