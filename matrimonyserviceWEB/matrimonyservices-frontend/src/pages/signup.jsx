@@ -7,10 +7,9 @@ import { useRouter } from "next/router";
 import { useAuth } from "@/utils/AuthProvider";
 import { useCookies } from "react-cookie";
 import { API_PATHS } from "@/config/ApiConfig";
-import axios from "axios";
-import { render } from "less";
-import PhoneInput from 'react-phone-input-2'
-import 'react-phone-input-2/lib/style.css'
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+// import { post } from "../apiService/httpService";
 
 // ... (existing imports)
 
@@ -28,11 +27,10 @@ const Signup = () => {
       return "Select " + eng;
     }
   };
-  const loginMethod =  () => {
-            // Perform login logic or any other actions
-            router.push('/otpScreen');
-};
-
+  const loginMethod = () => {
+    // Perform login logic or any other actions
+    router.push("/otp");
+  };
 
   const [selectedAddress, setSelectedAddress] = useState("");
   useEffect(() => {
@@ -57,24 +55,24 @@ const Signup = () => {
       fields: [
         {
           label: "Username",
-          key: "username",
+          name: "username",
           placeholder: "Enter Username",
-          name: "user_name",
           type: "text",
+          rules: [{ required: true, message: "Username is required" }],
         },
         {
           label: "Password",
-          key: "password",
-          placeholder: "Enter Password",
           name: "password",
+          placeholder: "Enter Password",
           type: "password",
+          rules: [{ required: true, message: "Password is required" }],
         },
         {
           label: "Re-Enter Password",
-          key: "re-enter-password",
-          placeholder: "Enter Password",
-          name: "re_passoword",
+          name: "re_enter_password",
+          placeholder: "Re-Enter Password",
           type: "password",
+          rules: [{ required: true, message: "Please re-enter password" }],
         },
       ],
     },
@@ -83,90 +81,101 @@ const Signup = () => {
       fields: [
         {
           label: "First Name",
-          key: "first_name",
-          placeholder: "Enter First Name",
           name: "first_name",
+          placeholder: "Enter First Name",
+          type: "text",
+          rules: [{ required: true, message: "First name is required" }],
+        },
+        {
+          label: "Middle Name",
+          name: "middle_name",
+          placeholder: "Enter Middle Name",
           type: "text",
         },
         {
           label: "Last Name",
-          key: "re-enter-password",
-          placeholder: "Enter Password",
           name: "last_name",
+          placeholder: "Enter Last Name",
+          type: "text",
+          rules: [{ required: true, message: "Last name is required" }],
+        },
+        {
+          label: "Date Of Birth",
+          name: "date_of_birth",
+          placeholder: "Enter Date of Birth",
+          type: "date",
+          rules: [{ required: true, message: "Date Of Birth is required" }],
+        },
+        {
+          label: "Gender",
+          name: "gender",
+          placeholder: "Select Gender",
+          type: "select",
+          rules: [{ required: true, message: "Gender is required" }],
+          options: [
+            { label: "Male", value: "1" },
+            { label: "Female", value: "2" },
+            { label: "Other", value: "3" },
+          ],
+        },
+        {
+          label: "Address",
+          name: "address",
+          placeholder: "Enter Address",
           type: "text",
         },
         {
-            label : 'Date Of Birth',
-            key : 'date_of_birth',
-            placeholder : '',
-            name : 'date_of_birth',
-            type : 'date'
+          label: "City",
+          name: "city",
+          placeholder: "Enter City",
+          type: "text",
         },
         {
-            label : 'Gender',
-            key : 'gender',
-            placeholder : 'Select Gender',
-            name : 'gender',
-            type : 'select'
+          label: "State",
+          name: "state",
+          placeholder: "Enter State",
+          type: "text",
+          rules: [{ required: true, message: "State is required" }],
         },
         {
-            label : 'Address',
-            key : 'address',
-            placeholder : 'Address',
-            name : 'address',
-            type : 'address-search'
+          name: "country",
+          label: "Country",
+          placeholder: "Select Coutry",
+          key: "country",
+          type: "text",
         },
         {
-            label : 'City',
-            key : 'city',
-            placeholder : 'Select City',
-            name : 'city',
-            type : 'select'
+          label: "Zip Code",
+          name: "zip_code",
+          placeholder: "Enter Zip Code",
+          type: "text",
+          rules: [{ required: true, message: "Zip code is required" }],
         },
-        {
-            label : 'State',
-            key : 'state',
-            placeholder : 'Select State',
-            name : 'state',
-            type : 'select'
-        },
-        {
-            label : 'Zip Code',
-            key : 'zip_code',
-            placeholder : 'Enter Zip Code',
-            name : 'zipcode',
-            type : 'text'
-        }
       ],
     },
     {
-        title : "Contact Information",
-        fields : [
-          {
-            name : 'Email',
-            label : 'Email',
-            placeholder : 'Enter Email',
-            key : 'email',
-            type : 'email'
+      title: "Contact Information",
+      fields: [
+        {
+          label: "Email",
+          name: "email",
+          placeholder: "Enter Email",
+          type: "email",
+          rules: [{ required: true, message: "Email is required" }],
         },
-            {
-                name : 'primary_phone',
-                label : 'Primary Phone (Mobile or Landline)',
-                placeholder : 'Enter Primary Phone',
-                key : 'primary_phone',
-                type : 'phonenumber'
-            },
-            {
-                name : 'country',
-                label : 'Country',
-                placeholder : 'Select Coutry',
-                key : 'country',
-                type : 'select'
-            }
-        ],
-    }
+        {
+          label: "Primary Phone",
+          name: "primary_phone",
+          placeholder: "Enter Primary Phone",
+          type: "phonenumber",
+          rules: [{ required: true, message: "Phone Number is required" }],
+        },
+      ],
+    },
   ];
+
   const RenderInput = (props) => {
+    // console.log(props.rules, "rules")
     const validationRules = [];
 
     return (
@@ -175,10 +184,14 @@ const Signup = () => {
         key={props.name}
         label={props.label}
         name={props.name}
-        rules={validationRules}
+        rules={props.rules}
       >
         {props.type === "select" ? (
-          <Select size="large" placeholder={props.placeholder} options={props.options} />
+          <Select
+            size="large"
+            placeholder={props.placeholder}
+            options={props.options}
+          />
         ) : props.type === "date-picker" ? (
           <DatePicker placeholder={props.placeholder} className="w-full" />
         ) : props.type === "address-search" ? (
@@ -194,12 +207,12 @@ const Signup = () => {
             onChange={(e) => setSelectedDivision(e)}
             value={selectedDivision || null}
           />
-        ) :
-         props.type === "phonenumber" ? (
+        ) : props.type === "phonenumber" ? (
           <PhoneInput
-          inputClass="intlphoneinput"
-          country="us"
-          placeholder="Enter phone number" />
+            inputClass="intlphoneinput"
+            country="us"
+            placeholder="Enter phone number"
+          />
         ) : (
           <Input
             type={props.type}
@@ -214,12 +227,11 @@ const Signup = () => {
   };
   const onFinish = async (values) => {
     values = { ...values, ...selectedAddress };
-    const { dob, confirmPassword, password, phone } = values;
-
+    const { dob, re_enter_password, password, primary_phone } = values;
     if (dob) {
       values.dob = dob.format("DD-MM-YYYY");
     }
-    const tempPhone = `+880${phone}`;
+    const tempPhone = `+880${primary_phone}`;
 
     const isValidBangladeshiPhoneNumber = (phoneNumber) => {
       const bangladeshiPhoneNumberRegex = /^(?:\+88|88)?(01[3-9]\d{8})$/;
@@ -228,19 +240,21 @@ const Signup = () => {
 
     const isValid = isValidBangladeshiPhoneNumber(tempPhone);
 
-    if (!isValid) {
-      notification.error({
-        message: "Invalid phone number",
-      });
-      return;
-    }
+    // if (!isValid) {
+    //   notification.error({
+    //     message: "Invalid phone number",
+    //   });
+    //   return;
+    // }
 
-    if (confirmPassword && confirmPassword === password) {
-      delete values.confirmPassword;
-    } else
+    if (re_enter_password && re_enter_password === password) {
+      delete values.re_enter_password;
+    } else {
       notification.error({
         message: "Password not matched",
       });
+      return;
+    }
 
     const updateValues = {
       basicInformation: {
@@ -259,19 +273,70 @@ const Signup = () => {
       },
     };
 
+    //workin body
+    // {
+    //   "user_name": "tytytytyt",
+    //   "re_passoword": "hgfhgfytrty",
+    //   "user_pwd": "hgfhgfytrty",
+    //   "first_name": "yytfghgy",
+    //   "last_name": "hvjhvhjgytgvh",
+    //   "birth_date": "1992-03-09",
+    //   "address": "1",
+    //   "zip": "55768",
+    //   "email": "siri@gmail.com",
+    //   "primary_phone": "9876543256",
+    //   "primary_phone_country": "91",
+    //   "primary_phone_type": 1,
+    //   "gender": 1,
+    //   "address_line1": "uytu",
+    //   "city": "rr",
+    //   "state": "stwr", "country": "counyrtuy"
+    // }
+
+    var data = {
+      email: values.email,
+      user_name: values.username,
+      user_pwd: values.password,
+      first_name: values.first_name,
+      middle_name: values.middle_name,
+      last_name: values.last_name,
+      primary_phone: primary_phone.substr(primary_phone.length-10,primary_phone.length),
+      primary_phone_country: primary_phone.substr(0,primary_phone.length-10),
+      primary_phone_type: 1,
+      birth_date: values.date_of_birth,
+      gender: values.gender,
+      address_line1: values.address,
+      city: values.city,
+      state: values.state,
+      zip: values.zip_code,
+      country: values.country,
+    };
+
     try {
       setLoading(true);
-      const response = await axios.post(API_PATHS.REGISTER, updateValues);
-      const { token } = response.data.data;
-      cookies.set("token", token, { path: "/" });
-      setSuccess(true);
-      setLoading(false);
-      login(response.data.data.user);
-      notification.success({
-        message: "Success",
-        description: "Account created successfully",
-      });
-      router.push("/dashboard");
+      const response = await post("http://localhost:5000/api/register", data);
+      debugger;
+      // const { token } = response.data.data;
+      // cookies.set("token", token, { path: "/" });
+
+      // login(response.data.data.user);
+      if (
+        response &&
+        response.message == "Account Created successfully. Please Login."
+      ) {
+        setSuccess(true);
+        setLoading(false);
+        notification.success({
+          message: "Success",
+          description: "Account created successfully",
+        });
+        router.push("/dashboard");
+      } else {
+        notification.error({
+          message: "Error",
+          description: response?.message || "internal server error.",
+        });
+      }
     } catch (error) {
       if (error.response) {
         const status = error.response.status;
@@ -291,47 +356,49 @@ const Signup = () => {
 
   return (
     <PublicLayout>
-      <div className="py-10  bg-[url('/assets/bg-pattern.png')] min-h-screen auth">
+      <div className="py-10 bg-[url('/assets/bg-pattern.png')] min-h-screen auth">
         <div className="w-[85%] mx-auto">
-          <img className="mb-6" src="/assets/logo-black.svg" alt="" />
-          <p className="text-3xl font-bold">Register</p>
+          <a href="/">
+            {" "}
+            <img className="mb-6" src="/assets/logo-black.svg" alt="" />
+          </a>
+          <p className="text-3xl font-bold">New Account Creation</p>
           <div className="border-t-2 border-[#b2b2b2] my-5"></div>
-
-          <div>
-            {formConfig.map((section, i) => {
-              return (
-                <div className={"mb-5"}>
-                  <p className="text-[#2F3C1F] text-xl font-semibold">
-                    {section.title}
-                  </p>
-                  <Form className="login-label" layout="vertical">
-                    <div className="grid grid-cols-4 gap-x-10 gap-y-2">
+          <Form className="login-label" layout="vertical" onFinish={onFinish}>
+            <div>
+              {formConfig.map((section, i) => {
+                return (
+                  <div className={"mb-5"}>
+                    <p className="text-[#2F3C1F] text-xl font-semibold">
+                      {section.title}
+                    </p>
+                    <div className="grid grid-cols-4 max-sm:grid-cols-1 gap-x-10 gap-y-2 max-sm:gap-y-0">
                       {section.fields.map((e) => (
                         <RenderInput {...e} />
                       ))}
                     </div>
-                    <div className="grid grid-cols-4 gap-x-10 gap-y-2">
+                    {/* <div className="grid grid-cols-4  gap-x-10 gap-y-2">
                       {section.fields2?.map((e) => (
                         <RenderInput {...e} />
                       ))}
-                    </div>
-                  </Form>
-                </div>
-              );
-            })}
-          </div>
-          <div>
-            <Button
-              loading={loading}
-              type="primary"
-              htmlType="submit"
-              key="reset"
-              className="btn-primary px-12"
-              onClick={loginMethod}
-            >
-              Continue
-            </Button>
-          </div>
+                    </div> */}
+                  </div>
+                );
+              })}
+            </div>
+            <div>
+              <Button
+                loading={loading}
+                type="primary"
+                htmlType="submit"
+                key="reset"
+                className="btn-primary px-12"
+                // onClick={loginMethod}
+              >
+                Continue
+              </Button>
+            </div>
+          </Form>
         </div>
       </div>
     </PublicLayout>
