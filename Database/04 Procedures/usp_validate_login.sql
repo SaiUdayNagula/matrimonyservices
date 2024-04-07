@@ -20,7 +20,7 @@ BEGIN
     -- Check if the username and password match 
 	IF EXISTS (
 		SELECT * FROM uvw_get_active_login_info 
-        WHERE (user_name=uname OR email = user_name ) AND 
+        WHERE (user_name=uname OR email = uname ) AND 
 				BINARY password = pwd)  THEN
 		-- Generate email OTP 
 		-- SET @OTP = cast(RAND()*100000 as char(5));
