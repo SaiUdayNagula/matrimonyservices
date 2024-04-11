@@ -95,7 +95,7 @@ BEGIN
 		created_user
 	);
 		
-		select last_insert_id();
+		select last_insert_id() as last;
 	else
 		select 'Invalid Account ID';
 	End if;
