@@ -4,8 +4,10 @@ import PublicLayout from "@/components/Layouts/PublicLayout";
 import images from "@/config/images";
 import { notification } from "antd";
 import { useRouter } from "next/router";
+import {post} from '../apiService/httpService';
 
-const OtpScreen = () => {
+
+const otp = () => {
   const [form] = Form.useForm();
   const router = useRouter();
   const [error, setError] = useState(false);
@@ -16,11 +18,13 @@ const OtpScreen = () => {
     setLoading(true);
 
     // Simulate OTP verification (replace this with your actual OTP verification logic)
-    setTimeout(() => {
+    setTimeout(async () => {
       setLoading(false);
       const enteredOTP = values.otp.join(""); // Combine individual digits into a single string
-
-      if (enteredOTP === "1234") {
+      const response = await post("http://localhost:5000/api/otp",{"otp":enteredOTP});
+      console.log(response);
+      debugger;
+      if (response && response.message === "OTP is valid") {
         // Correct OTP
         setSuccess(true);
         setError(false);
@@ -30,6 +34,10 @@ const OtpScreen = () => {
         });
         router.push("/dashboard");
       } else {
+        notification.error({
+          message:"error",
+          description:response?.message || 'internal server error.'
+        });
         // Incorrect OTP
         setSuccess(false);
         setError(true);
@@ -49,16 +57,17 @@ const OtpScreen = () => {
         <Form.Item
           key={i}
           name={["otp", i]}
-          rules={[
+          rules={[  
             // { required: true, message: "Please enter the OTP digit" },
             // { pattern: /^\d{1}$/, message: "Please enter a single digit" },
-          ]}
+          ]}  
           className=""
         >
           <Input
             type="password"
             className="rounded-[10px] text-2xl text-center"
             autoComplete={false}
+            maxLength={1}
           />
         </Form.Item>
       );
@@ -70,14 +79,14 @@ const OtpScreen = () => {
     <PublicLayout>
       <div className="relative h-screen flex overflow-hidden auth">
         {/* Side Image Section (70%) */}
-        <div className='md:col-span-2 h-full relative w-[70%] bg-[url("/assets/SideImage.png")] bg-no-repeat bg-center bg-cover theme-bg'>
+        <div className='max-sm:hidden md:col-span-2 h-full relative w-[70%] bg-[url("/assets/SideImage.png")] bg-no-repeat bg-center bg-cover theme-bg'>
           {/* <img
                         className='object-cover object-center theme-bg'
                         src={images.sideImage}
                         alt='Login Image'
                     /> */}
           {/* Logo at top-left corner */}
-          <a href="" className="absolute mt-10 ml-10">
+          <a href="/" className="absolute mt-10 ml-10">
             <img
               className="w-60 h-15"
               src={images.logo} // Add your logo image source
@@ -95,7 +104,7 @@ const OtpScreen = () => {
         </div>
 
         {/* OTP Form Section (30%) */}
-        <div className=" w-[30%] px-16 flex items-center">
+        <div className="max-sm:w-full w-[30%] px-16 max-sm:px-8 flex items-center">
           <div className="w-full p-4">
             <div>
               <div>
@@ -161,4 +170,4 @@ const OtpScreen = () => {
   );
 };
 
-export default OtpScreen;
+export default otp;
