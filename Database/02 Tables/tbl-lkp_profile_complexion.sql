@@ -1,4 +1,4 @@
-CREATE TABLE `profile_complexion` (
+CREATE TABLE `lkp_profile_complexion` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `description` varchar(250) DEFAULT NULL,
