@@ -42,6 +42,6 @@ CREATE TABLE `profile_personal` (
   `created_user` varchar(45) DEFAULT NULL,
   `modified_date` datetime DEFAULT NULL,
   `modified_user` varchar(45) DEFAULT NULL,
-  `profile_personalcol` varchar(45) DEFAULT NULL,
+  `mother_tounge` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`profile_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
