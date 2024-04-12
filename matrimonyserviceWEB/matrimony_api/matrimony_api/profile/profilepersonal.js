@@ -26,7 +26,12 @@ router.post('/', (req, res) => {
 
     const response = result[0][0]; // Assuming stored procedure returns result in first index 
 
-    res.status(200).json({ message: 'Profile Created successfully.', profile_id: response.last });
+    if (response['Invalid Account ID'] === 'Invalid Account ID') {
+      res.status(200).json({ message: 'Account_id doesnot exist.' });
+    } else {
+      res.status(200).json({ message: 'Profile Created successfully.', profile_id: response.last });
+    }
+    
   });
 });
 

@@ -16,7 +16,7 @@ router.use(bodyParser.json());
 const loginRoute = require('../login/login');
 const registerRoute = require('../register/register');
 const otpRoute = require('../otp_validation/validate_otp')
-const profilepersonalcreateRoute = require('../profile/profilepersonal')
+const profilepersonalcreateRoute = require('../profile/profilePersonal')
 const profileaddressRoute = require('../profile/profileAddress')
 const profile_eduRoute = require('../profile/profileEducation')
 const profilepropRoute = require('../profile/profileProperty')
