@@ -40,4 +40,4 @@ VIEW `uvw_account_profiles` AS
             `profile_address`
         WHERE
             (`profile_address`.`address_type` = 1)
-        LIMIT 1) `pa` ON ((`profile_personal`.`profile_id` = `pa`.`profile_id`)))
+        LIMIT 10) `pa` ON ((`profile_personal`.`profile_id` = `pa`.`profile_id`)))
