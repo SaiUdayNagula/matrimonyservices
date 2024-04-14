@@ -23,6 +23,12 @@ const profilepropRoute = require('../profile/profileProperty')
 const profileInterestRoute = require('../profile/profileInterest')
 const profileHobbyRoute = require('../profile/profileHobby')
 
+// gets
+const accountProfilesRoute = require('../dashboard_gets/accountProfiles')
+const profilePersonalGetRoute = require('../profile_info_gets/profilePersonal')
+const profileAddressGetRoute = require('../profile_info_gets/profileAddress')
+const profileEducationGetRoute = require('../profile_info_gets/profileEducation')
+
 // Map the route modules to their paths
 router.use('/api/login', loginRoute);
 router.use('/api/register', registerRoute);
@@ -33,5 +39,11 @@ router.use('/api/proeducation', profile_eduRoute);
 router.use('/api/proproperty', profilepropRoute);
 router.use('/api/prointerest', profileInterestRoute);
 router.use('/api/prohobby', profileHobbyRoute);
+
+//gets
+router.use('/api/accountpro', accountProfilesRoute);
+router.use('/api/propersonalget', profilePersonalGetRoute);
+router.use('/api/proaddressget', profileAddressGetRoute);
+router.use('/api/proeducationget', profileEducationGetRoute);
 
 module.exports = router;
