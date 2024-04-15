@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
   // Using req.query to receive parameters from a GET request
   const { profileid } = req.query;
 
-  const callView = `SELECT * FROM uvw_profile_education WHERE profile_id = ?`;
+  const callView = `SELECT * FROM uvw_profile_hobby WHERE profile_id = ?`;
   
   db.query(callView, [ profileid ], (err, results) => {
     if (err) {
@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
       res.status(500).json({ message: 'Internal server error' });
       return;
     }
-    
+
     if (results.length === 0) {
         // No profiles found
         res.status(404).json({ message: 'ProfileID doesnot exist' });
@@ -23,17 +23,10 @@ router.get('/', (req, res) => {
         // Profiles found, return them
         const profiles = results.map(profile => ({            
             profileId: profile.profile_id,
-            educationlevel: profile.education_level,
-            yearcompleted: profile.year_completed,
-            institutionname: profile.institution_name,
-            addressline1: profile.address_line1,
-            city: profile.city,
-            state: profile.state,
-            country: profile.country,
-            zip: profile.zip,
-            fieldofstudy: profile.field_of_study,
+            hobby_id: profile.hobby_id,
+            description: profile.description,
             datecreated: profile.date_created,
-            modifieddate: profile.modified_date
+            datemodified: profile.date_modified
             }));
 
         res.json(profiles);

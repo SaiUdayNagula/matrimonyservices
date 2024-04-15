@@ -16,9 +16,6 @@ router.get('/', (req, res) => {
       return;
     }
 
-    // const response = result[0][0]; // Assuming stored procedure returns result in first index 
-
-    // TODO
     if (results.length === 0) {
         // No profiles found
         res.status(404).json({ message: 'ProfileID doesnot exist' });
